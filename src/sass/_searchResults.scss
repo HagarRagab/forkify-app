@@ -1,0 +1,55 @@
+.search-results {
+  padding: 3rem 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.results {
+  list-style: none;
+  margin-bottom: 2rem;
+}
+
+%positionCenter {
+  position: absolute;
+  top: 50%;
+}
+
+.pagination {
+  position: relative;
+  margin-top: auto;
+  padding: 0 3.5rem;
+
+  &__btn {
+    &--prev {
+      @extend %positionCenter;
+      left: 3.25rem;
+      transform: translateY(-50%);
+    }
+    &--next {
+      right: 3.25rem;
+      @extend %positionCenter;
+      transform: translateY(-50%);
+    }
+  }
+
+  &__page-num {
+    color: $color-primary;
+    font-size: 1.5rem;
+    font-weight: 600;
+    @extend %positionCenter;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.copyright {
+  color: $color-grey-dark-2;
+  font-size: 1.2rem;
+  padding: 0 3.5rem;
+  margin-top: 4rem;
+
+  .twitter-link:link,
+  .twitter-link:visited {
+    color: $color-grey-dark-2;
+  }
+}
