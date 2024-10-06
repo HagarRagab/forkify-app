@@ -44,22 +44,82 @@
 
 .upload {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 4rem 6rem;
+
+  & .Ingredients-container {
+    position: relative;
+  }
+
+  &__ingredients {
+    max-height: 238px;
+    overflow-y: auto;
+    padding-right: 1rem;
+
+    & .ingredient {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+  }
 
   &__column {
     display: grid;
     grid-template-columns: 1fr 2.8fr;
     align-items: center;
-    gap: 1.5rem;
+    gap: 2rem;
+
+    // Hide scrollbar
+    &::-webkit-scrollbar {
+      width: 1rem;
+      scroll-margin: 1rem;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-image: $gradient;
+      border-radius: 5px;
+    }
 
     & label {
       font-size: 1.5rem;
       font-weight: 600;
       color: inherit;
+      position: relative;
+
+      &:not(.upload__ingredients label)::after {
+        content: '*';
+        position: absolute;
+        color: red;
+        margin-left: 0.5rem;
+      }
+    }
+
+    & .upload__field {
+      position: relative;
+
+      &::after {
+        content: attr(data-after);
+        font-size: 1.4rem;
+        color: red;
+        text-wrap: nowrap;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        transform: translateY(0);
+        opacity: 0;
+        transition: 0.3s;
+        z-index: -1;
+      }
+    }
+
+    & .upload__field.input-error::after {
+      opacity: 1;
+      transform: translateY(2rem);
     }
 
     & input {
+      width: 100%;
       font-size: 1.5rem;
       padding: 0.8rem 1rem;
       border: 1px solid #ddd;
@@ -77,11 +137,43 @@
       }
     }
 
-    & button {
-      grid-column: 1 / span 2;
-      justify-self: center;
-      margin-top: 1rem;
+    & .upload__field.input-error input {
+      border-color: red;
+      color: red;
     }
+
+    & .upload__field.input-success input {
+      border-color: green;
+      color: green;
+    }
+  }
+
+  & .plus-btn {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 1rem;
+    outline: none;
+    background-image: $gradient;
+    color: #fff;
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    cursor: pointer;
+    transition: 0.3s;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__btn {
+    grid-column: 1 / span 2;
+    justify-self: center;
+    margin-top: 1rem;
   }
 
   &__heading {

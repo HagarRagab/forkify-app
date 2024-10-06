@@ -48,6 +48,7 @@ export const loadSearchResults = async function (query) {
     if (!query) return;
     state.search.query = query;
     const data = await AJAX(`${API_URL}?search=${query}&key=${KEY}`);
+    // sortResults(data.data.recipes);
     state.search.results = data.data.recipes.map(recipe =>
       formatDataKeys(recipe)
     );
@@ -57,11 +58,25 @@ export const loadSearchResults = async function (query) {
   }
 };
 
-export const getSearchResultsPage = function (page = state.search.page) {
-  state.search.page = page;
-  const start = (page - 1) * state.search.numResults;
-  const end = page * state.search.numResults;
-  return state.search.results.slice(start, end);
+//TODO ##############
+export const sortResults = function (sortBy = 'all') {
+  return sortBy === 'all'
+    ? state.search
+    : {
+        ...state.search,
+        results: state.search.results.filter(recipe => recipe.key),
+      };
+};
+
+//TODO ##############
+export const getSearchResultsPage = function (
+  page = state.search.page,
+  search = state.search
+) {
+  search.page = page;
+  const start = (page - 1) * search.numResults;
+  const end = page * search.numResults;
+  return search.results.slice(start, end);
 };
 
 export const loadServings = function (newServings) {
@@ -111,10 +126,10 @@ export const uploadRecipe = async function (newRecipe) {
       });
 
     const recipe = {
-      title: newRecipe.title,
-      source_url: newRecipe.sourceUrl,
-      image_url: newRecipe.imageUrl,
-      publisher: newRecipe.publisher,
+      title: newRecipe.title.trim(),
+      source_url: newRecipe.sourceUrl.trim(),
+      image_url: newRecipe.imageUrl.trim(),
+      publisher: newRecipe.publisher.trim(),
       cooking_time: +newRecipe.cookingTime,
       servings: +newRecipe.servings,
       ingredients,
