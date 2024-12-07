@@ -22,6 +22,24 @@
   }
 }
 
+%scrollBar {
+  // manage scrollbar
+  &::-webkit-scrollbar {
+    width: 1rem;
+    scroll-margin: 1rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-image: $gradient;
+    border-radius: 5px;
+    border: 2px solid transparent;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: $color-grey-light-2;
+  }
+}
+
 .btn {
   @extend %btn;
 
@@ -113,8 +131,8 @@
   }
 
   svg {
-    height: 2.5rem;
-    width: 2.5rem;
+    height: 2.2rem;
+    width: 2.2rem;
     fill: #fff;
   }
 }

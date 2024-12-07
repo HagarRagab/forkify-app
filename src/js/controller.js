@@ -109,6 +109,14 @@ const controlAddRecipe = async function (newRecipe) {
   }
 };
 
+const controlShoppingCart = function () {
+  shoppingView.render(model.state.shoppingList);
+};
+
+const controlWeeklyMeal = function () {
+  console.log('done');
+};
+
 // Subscriber
 const init = function () {
   recipeView.addHandlerRender(controlRecipes);
@@ -118,6 +126,7 @@ const init = function () {
   sortView.addHandlerSort(controlSorting);
   paginationView.addHandlerPagination(controlPagination);
   addRecipeView.addHandlerUpload(controlAddRecipe);
+  shoppingView.addHandlerCart(controlShoppingCart);
 
   if (model.state.bookmarks) bookmarkView.render(model.state.bookmarks);
 };

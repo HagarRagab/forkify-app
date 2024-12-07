@@ -70,16 +70,8 @@
     align-items: center;
     gap: 2rem;
 
-    // Hide scrollbar
-    &::-webkit-scrollbar {
-      width: 1rem;
-      scroll-margin: 1rem;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background-image: $gradient;
-      border-radius: 5px;
-    }
+    // manage scrollbar
+    @extend %scrollBar;
 
     & label {
       font-size: 1.5rem;

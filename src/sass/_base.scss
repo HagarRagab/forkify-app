@@ -27,6 +27,11 @@ $bp-smallest: 31.25em; // 500px
   box-sizing: inherit;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 html {
   box-sizing: border-box;
   font-size: 62.5%;
@@ -48,7 +53,8 @@ body {
 }
 
 .container {
-  max-width: 120rem;
+  position: relative;
+  max-width: 130rem;
   min-height: 117rem;
   margin: 4vw auto;
   background-color: #fff;
