@@ -35,9 +35,14 @@
         </form>
 
         <nav class="nav">
+          <button class="nav__btn nav__btn--menu">
+            <svg class="nav__icon">
+              <use href="src/img/icons.svg#icon-menu"></use>
+            </svg>
+          </button>
           <ul class="nav__list">
             <li class="nav__item">
-              <button class="nav__btn nav__btn--shopping">
+              <button class="nav__btn nav__btn--shopping" title="Cart">
                 <svg class="nav__icon">
                   <use href="src/img/icons.svg#icon-cart"></use>
                 </svg>
@@ -45,7 +50,7 @@
               </button>
             </li>
             <li class="nav__item">
-              <button class="nav__btn nav__btn--add-recipe">
+              <button class="nav__btn nav__btn--add-recipe" title="Add recipe">
                 <svg class="nav__icon">
                   <use href="src/img/icons.svg#icon-edit"></use>
                 </svg>
@@ -53,7 +58,7 @@
               </button>
             </li>
             <li class="nav__item">
-              <button class="nav__btn nav__btn--bookmarks">
+              <button class="nav__btn nav__btn--bookmarks" title="Bookmarks">
                 <svg class="nav__icon">
                   <use href="src/img/icons.svg#icon-bookmark"></use>
                 </svg>
@@ -81,20 +86,18 @@
       <div class="search-results">
         <form class="sort"></form>
 
-        <ul class="results"></ul>
+        <ul class="results">
+          <div class="message">
+            <div>
+              <svg>
+                <use href="src/img/icons.svg#icon-smile"></use>
+              </svg>
+            </div>
+            <p>Start by searching for a recipe or an ingredient. Have fun!</p>
+          </div>
+        </ul>
 
         <div class="pagination"></div>
-
-        <p class="copyright">
-          &copy; Copyright by
-          <a
-            class="twitter-link"
-            target="_blank"
-            href="https://twitter.com/jonasschmedtman"
-            >Jonas Schmedtmann</a
-          >. Use for learning or your portfolio. Don't use to teach. Don't claim
-          as your own.
-        </p>
       </div>
 
       <div class="recipe">

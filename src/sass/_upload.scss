@@ -1,4 +1,6 @@
 .add-recipe-window {
+  max-width: calc(100vw - 8rem);
+  max-height: calc(100vh - 8rem);
   position: fixed;
   top: 50%;
   left: 50%;
@@ -6,11 +8,17 @@
   width: 100rem;
   background-color: white;
   border-radius: 9px;
+  overflow-y: auto;
+  @extend %scrollBar;
 
   padding: 5rem 6rem;
   box-shadow: 0 4rem 6rem rgba(0, 0, 0, 0.25);
   z-index: 1000;
   transition: all 0.5s;
+
+  @media only screen and (max-width: $bp-smallest) {
+    padding: 3rem;
+  }
 
   .btn--close-modal {
     font-family: inherit;
@@ -47,6 +55,10 @@
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 4rem 6rem;
 
+  @media only screen and (max-width: $bp-medium) {
+    grid-template-columns: 1fr;
+  }
+
   & .Ingredients-container {
     position: relative;
   }
@@ -69,9 +81,12 @@
     grid-template-columns: 1fr 2.8fr;
     align-items: center;
     gap: 2rem;
-
     // manage scrollbar
     @extend %scrollBar;
+
+    @media only screen and (max-width: $bp-smallest) {
+      grid-template-columns: 1fr;
+    }
 
     & label {
       font-size: 1.5rem;
@@ -141,8 +156,8 @@
   }
 
   & .plus-btn {
-    width: 40px;
-    height: 40px;
+    width: 4rem;
+    height: 4rem;
     border: none;
     border-radius: 1rem;
     outline: none;
@@ -155,17 +170,21 @@
     transition: 0.3s;
     position: absolute;
     right: 0;
-    bottom: 0;
 
     &:hover {
       transform: scale(1.1);
     }
+
+    @media only screen and (max-width: $bp-small) {
+      width: 3.5rem;
+      height: 3.5rem;
+    }
   }
 
   &__btn {
-    grid-column: 1 / span 2;
+    grid-column: 1 / -1;
     justify-self: center;
-    margin-top: 1rem;
+    margin-top: 3rem;
   }
 
   &__heading {
@@ -174,10 +193,5 @@
     text-transform: uppercase;
     margin-bottom: 1rem;
     grid-column: 1/-1;
-  }
-
-  &__btn {
-    grid-column: 1 / -1;
-    justify-self: center;
   }
 }

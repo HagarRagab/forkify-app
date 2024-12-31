@@ -1,5 +1,6 @@
 import { TIMEOUT_SEC } from './config';
 
+// Escape from API request in case the request took long time
 const timeout = function (s) {
   return new Promise((_, reject) => {
     setTimeout(() => {
@@ -10,6 +11,7 @@ const timeout = function (s) {
 
 export const AJAX = async function (url, newRecipe = undefined) {
   try {
+    // POST / GET data to forkify-api
     const fetchPro = newRecipe
       ? fetch(url, {
           method: 'POST',
@@ -20,6 +22,7 @@ export const AJAX = async function (url, newRecipe = undefined) {
         })
       : fetch(url);
 
+    // res will be fetched data in case fetch is faster than time out
     const res = await Promise.race([fetchPro, timeout(TIMEOUT_SEC)]);
     const data = await res.json();
 

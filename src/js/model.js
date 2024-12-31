@@ -1,6 +1,7 @@
 import { API_URL, RES_PER_PAGE, KEY } from './config.js';
 import { AJAX } from './helpers.js';
 
+// All app data
 export const state = {
   recipe: {},
   search: {
@@ -12,6 +13,7 @@ export const state = {
   bookmarks: [],
 };
 
+// Convert recipe data key to camelCase
 export const formatDataKeys = function (recipe) {
   return Object.entries(recipe).reduce(
     (recipeObj, [key, value]) => {
@@ -31,27 +33,33 @@ export const formatDataKeys = function (recipe) {
   );
 };
 
+// Fetching recipe data from API
+// AJAX is imported from helper.js
 export const loadRecipe = async function (id) {
   try {
     const data = await AJAX(`${API_URL}${id}?key=${KEY}`);
     state.recipe = formatDataKeys(data.data.recipe);
+
+    // Check if the recipe is already bookmarked then update maked property in recipe object
     if (state.bookmarks.some(bookmark => bookmark.id === id))
       state.recipe.marked = true;
     else state.recipe.marked = false;
 
     // Get shopping list
     getShoppingList();
-  } catch (err) {
-    throw err;
+  } catch (error) {
+    throw error;
   }
 };
 
+// Fetching search results by using user's query from search field
 export const loadSearchResults = async function (query) {
   try {
     if (!query) return;
     state.search.query = query;
+
     const data = await AJAX(`${API_URL}?search=${query}&key=${KEY}`);
-    // sortResults(data.data.recipes);
+
     state.search.results = data.data.recipes.map(recipe =>
       formatDataKeys(recipe)
     );
@@ -61,7 +69,9 @@ export const loadSearchResults = async function (query) {
   }
 };
 
-//TODO ##############
+// Sorting results (by all / by me)
+// Recipes object created by user contains key property
+// return object
 export const sortResults = function (sortBy = 'all') {
   return sortBy === 'all'
     ? state.search
@@ -71,7 +81,6 @@ export const sortResults = function (sortBy = 'all') {
       };
 };
 
-//TODO ##############
 export const getSearchResultsPage = function (
   page = state.search.page,
   search = state.search

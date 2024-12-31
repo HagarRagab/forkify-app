@@ -54,7 +54,6 @@ const controlSearchResults = async function () {
   }
 };
 
-//TODO ############
 const controlSorting = function (sortBy) {
   const search = model.sortResults(sortBy);
   resultsView.render(model.getSearchResultsPage(1, search));
@@ -111,10 +110,6 @@ const controlAddRecipe = async function (newRecipe) {
 
 const controlShoppingCart = function () {
   shoppingView.render(model.state.shoppingList);
-};
-
-const controlWeeklyMeal = function () {
-  console.log('done');
 };
 
 // Subscriber

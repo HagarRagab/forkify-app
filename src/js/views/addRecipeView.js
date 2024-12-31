@@ -164,7 +164,7 @@ class AddRecipeView extends View {
       <label>Ingredient ${i}</label>
       <div class="ingredient" data-ing="${i}" name="ingredient-${i}">
         <div class="upload__field">
-          <input type="number" placeholder="Quantity" min="0.1" />
+          <input type="number" placeholder="Quantity"/>
         </div>
         <input type="text" placeholder="Unit" />
         <input type="text" placeholder="Description" />

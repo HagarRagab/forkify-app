@@ -1,6 +1,7 @@
 .recipe {
   position: relative;
   background-color: $color-grey-light-1;
+  grid-area: recipe;
 
   ///////////
   // FIGURE
@@ -47,6 +48,10 @@
     line-height: 1.95;
     text-align: center;
 
+    @media only screen and (max-width: $bp-small) {
+      font-size: 2rem;
+    }
+
     span {
       -webkit-box-decoration-break: clone;
       box-decoration-break: clone;
@@ -68,7 +73,16 @@
   &__details {
     display: flex;
     align-items: center;
-    padding: 7.5rem 8rem 3.5rem 8rem;
+    padding: 7.5rem 8rem 3.5rem;
+    gap: 1.4rem;
+
+    @media only screen and (max-width: $bp-medium) {
+      padding-inline: 5rem;
+    }
+    @media only screen and (max-width: $bp-smallest) {
+      flex-wrap: wrap;
+      padding-inline: 3rem;
+    }
   }
 
   &__info {
@@ -100,17 +114,21 @@
     transform: translateY(-1px);
   }
 
+  &__icons {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+  }
+
   &__user-generated {
     background-color: $color-grey-light-2;
-
     display: flex;
     align-items: center;
     justify-content: center;
     height: 4rem;
     width: 4rem;
     border-radius: 10rem;
-
-    margin-left: auto;
+    margin-right: 1rem;
 
     svg {
       height: 2.25rem;
@@ -133,6 +151,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    @media only screen and (max-width: $bp-medium) {
+      padding: 3rem;
+    }
   }
 
   &__ingredient-list {
@@ -140,6 +162,10 @@
     grid-template-columns: 1fr 1fr;
     gap: 2.5rem 3rem;
     list-style: none;
+
+    @media only screen and (max-width: $bp-small) {
+      grid-template-columns: 1fr;
+    }
   }
 
   &__ingredient {
@@ -168,6 +194,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    @media only screen and (max-width: $bp-small) {
+      padding-inline: 5rem;
+    }
   }
 
   &__directions-text {
