@@ -2,6 +2,8 @@
 
 ![alt text](src/img/forkify.jpg)
 
+**Live demo** [click here](https://forkify-application-food.netlify.app/)
+
 > ### Description:
 
 Forkify is a dynamic recipe management application for finding different recipes and create recipes, showcasing advanced features and implementing the Model-View-Controller **(MVC)** architecture for clean and maintainable code.
